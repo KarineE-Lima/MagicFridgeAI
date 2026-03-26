@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Magic Fridge AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=edit_delete" />
+</head>
+<body>
+    <h1>Chef IA</h1>
+    <section>
+        <div id="ingredientes">
+            <h2>Cadastrar Ingredientes</h2>
+            <form method="post">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome"> <br>
+                <label for="categoria">Categoria</label>
+                <input type="text" name="categoria" id="categoria"> <br>
+                <label for="quantidade">Quantidade</label>
+                <input type="number" name="quantidade" id="quantidade"> <br>
+                <label for="validade">Validade</label>
+                <input type="date" name="validade" id="validade"> <br>
+                <button type="submit" id="btnCadastro">Cadastrar</button>
+            </form>
+
+            <div id="listaFood">
+
+            </div>
+        </div>
+        
+        <div id="receitaIA">
+            <h2>Área da Receita</h2>
+            <button id="btnReceita">Pedir Receita</button>
+            <div id="result">
+                <p>Sua receita vai aparecer aqui...</p>
+            </div>
+        </div>
+    </section>
+    <script>
+        const btnCadastro = document.getElementById('btnCadastro')
+        const btnReceita = document.getElementById('btnReceita')
+        const listaFood = document.getElementById('listaFood')
+        const receita = document.getElementById('result')
+
+        const inNome = document.getElementById('nome')
+        const inCategoria = document.getElementById('categoria')
+        const inQuantidade = document.getElementById('quantidade')
+        const inValidade = document.getElementById('validade')
+        listarIngredientes()
+        btnCadastro.addEventListener('click', async (event) =>{
+            event.preventDefault()
+
+            try {
+                const food = {
+                    nome: inNome.value,
+                    categoria: inCategoria.value,
+                    quantidade: inQuantidade.value,
+                    validade: inValidade.value
+                }
+                const response = await fetch(`food`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type' : 'application/json'
+                    }, body: JSON.stringify(food)
+                })
+                if(response.ok){
+                    alert('Ingrediente cadastrado com sucesso!')
+                    listaFood.innerText = ''
+                    listarIngredientes()
+                } else{
+                    alert('Erro ao cadastrar o ingrediente')
+                }
+            } catch (erro){
+                console.log(erro)
+            }
+        })
+
+        btnReceita.addEventListener('click', async () =>{
+            try {
+                receita.innerHTML = '<p class="texto-piscando">Carregando receita...</p>'
+                const response = await fetch('ia/pergunta')
+                const result = await response.text()
+                receita.innerHTML = `<p>${result}</p>`
+
+            } catch (erro){
+                console.log(erro)
+            }
+        })
+        async function listarIngredientes(){
+            const response = await fetch('food/listar')
+            const result = await response.json()
+            result.forEach((res)=> {
+                const elem = document.createElement('div')
+                elem.className = 'food'
+                elem.innerHTML = `<p>Nome: ${res.nome}</p>
+                    <p>Categoria: ${res.categoria}</p>
+                    <p>Quantidade: ${res.quantidade}</p>
+                    <p>Validade: ${res.validade}</p>
+                    <button onclick="apagar(${res.id})">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
+                    <button onclick="atualizar(${res.id})">
+                        <span class="material-symbols-outlined">edit</span>
+                    </button>`
+                listaFood.appendChild(elem)
+            })
+        }
+        async function apagar(id){
+            if(!confirm('Tem certeza que quer excluir esse alimento?')){
+                return
+            }
+            try {
+                const response = await fetch(`food/${id}`, {method:'DELETE'})
+                if(response.ok){
+                    alert('Ingrediente Excluído!')
+                    listaFood.innerText = ''
+                    listarIngredientes()
+                } else {
+                    alert('Erro ao excluir.')
+                }
+
+            } catch (e){
+                alert('Erro ao excluir.')
+            }
+
+        }
+        async function atualizar(id){
+
+            const newFood ={
+                nome: inNome.value,
+                categoria: inCategoria.value,
+                quantidade: inQuantidade.value,
+                validade: inValidade.value
+            }
+            try {
+                const response = await fetch(`food/${id}`, {
+                    method: 'PUT',
+                    headers:{
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newFood)
+                })
+                if(response.ok){
+                    alert('Ingrediente atualizado com sucesso!')
+                    listaFood.innerText = ''
+                    listarIngredientes()
+                }
+            } catch (erro){
+                console.log(erro)
+            }
+        }
+
+    </script>
+
+</body>
+</html>

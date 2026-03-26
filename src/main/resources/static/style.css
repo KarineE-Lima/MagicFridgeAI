@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+:root{
+    --corPrinc: #7D9D85;
+    --corTxt: #333333;
+    --corDestaque: #E67E22;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    font-family: "Segoe UI";
+    background-color: white;
+    color: var(--corTxt);
+}
+h1{
+    margin: 10px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.41);
+}
+@keyframes pulse {
+    0% { opacity: 1;}
+    50% { opacity: 0;}
+    100% {opacity: 1;}
+}
+.texto-piscando{
+    animation: pulse 1s linear infinite;
+}
+section{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+#ingredientes{
+    width: 50vw;
+}
+#receitaIA{
+    width: 50vw;
+    padding: 10px;
+}
+input{
+    width: 150px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.4);
+    outline: none;
+}
+input:focus{
+    background-color: var(--corDestaque);
+}
+#result{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.36);
+    margin: 10px;
+    padding: 10px;
+}
+.food{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.45);
+    padding: 10px;
+    margin: 15px;
+    width: 250px;
+    border-radius: 10px;
+}
+h2{
+    margin-bottom: 20px;
+}
+button{
+    padding: 10px;
+    background-color: var(--corPrinc);
+    color: white;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.58);
+    cursor: pointer;
+}
+button:hover{
+    background-color: var(--corDestaque);
+    transition: .5s;
+}
