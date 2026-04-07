@@ -1,6 +1,5 @@
 package com.teste.MagicFridgeAI.controller;
 
-import com.teste.MagicFridgeAI.model.FoodItem;
 import com.teste.MagicFridgeAI.model.FoodItemRequestDTO;
 import com.teste.MagicFridgeAI.model.FoodItemResponseDTO;
 import com.teste.MagicFridgeAI.service.FoodItemService;

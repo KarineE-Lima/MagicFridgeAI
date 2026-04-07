@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--corPrinc);
+}
+section{
+    display: block;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.29);
+    padding: 40px;
+    text-align: center;
+}
+button{
+    margin: 10px auto;
+    padding: 10px 20px;
+}
+section > p{
+    margin: 15px;
+}
+a{
+    font-weight: bold;
+    color: var(--corDestaque);
+}
+a:hover{
+    color: var(--corPrinc);
+}

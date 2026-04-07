@@ -1,9 +1,7 @@
 package com.teste.MagicFridgeAI.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.teste.MagicFridgeAI.model.user.User;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +20,10 @@ public class FoodItem{
     private String categoria;
     private Integer quantidade;
     private LocalDate validade;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Magic Fridge AI</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=edit_delete" />
 </head>
 <body>
@@ -37,10 +37,17 @@
         </div>
     </section>
     <script>
+        const token = localStorage.getItem('token')
+        document.addEventListener('DOMContentLoaded', ()=>{
+            if(!token){
+                window.location.href = 'login.html'
+            }
+        })
         const btnCadastro = document.getElementById('btnCadastro')
         const btnReceita = document.getElementById('btnReceita')
         const listaFood = document.getElementById('listaFood')
         const receita = document.getElementById('result')
+
 
         const inNome = document.getElementById('nome')
         const inCategoria = document.getElementById('categoria')
@@ -60,7 +67,8 @@
                 const response = await fetch(`food`, {
                     method: 'POST',
                     headers: {
-                        'Content-Type' : 'application/json'
+                        'Content-Type' : 'application/json',
+                        'Authorization' : `Bearer ${token}`
                     }, body: JSON.stringify(food)
                 })
                 if(response.ok){
@@ -78,7 +86,10 @@
         btnReceita.addEventListener('click', async () =>{
             try {
                 receita.innerHTML = '<p class="texto-piscando">Carregando receita...</p>'
-                const response = await fetch('ia/pergunta')
+                const response = await fetch('ia/pergunta', {
+                    method: 'GET',
+                    headers: {'Authorization' : `Bearer ${token}`, 'Content-Type' : 'application/json'}
+                })
                 const result = await response.text()
                 receita.innerHTML = `<p>${result}</p>`
 
@@ -87,7 +98,10 @@
             }
         })
         async function listarIngredientes(){
-            const response = await fetch('food/listar')
+            const response = await fetch('food/listar', {
+                method: 'GET',
+                headers: {'Authorization' : `Bearer ${token}`, 'Content-Type' : 'application/json'}
+            })
             const result = await response.json()
             result.forEach((res)=> {
                 const elem = document.createElement('div')
@@ -110,7 +124,11 @@
                 return
             }
             try {
-                const response = await fetch(`food/${id}`, {method:'DELETE'})
+                const response = await fetch(`food/${id}`, {
+                    method:'DELETE',
+                    headers: {'Authorization' : `Bearer ${token}`,
+                        'Content-Type' : 'application/json'}
+                })
                 if(response.ok){
                     alert('Ingrediente Excluído!')
                     listaFood.innerText = ''
@@ -136,7 +154,8 @@
                 const response = await fetch(`food/${id}`, {
                     method: 'PUT',
                     headers:{
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization' : `Bearer ${token}`
                     },
                     body: JSON.stringify(newFood)
                 })
