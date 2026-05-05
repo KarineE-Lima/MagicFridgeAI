@@ -1,9 +1,9 @@
-package com.teste.MagicFridgeAI.service;
+package com.teste.MagicFridgeAI.service.food;
 
 import com.teste.MagicFridgeAI.exceptions.FoodNotFoundException;
-import com.teste.MagicFridgeAI.model.FoodItem;
-import com.teste.MagicFridgeAI.model.FoodItemRequestDTO;
-import com.teste.MagicFridgeAI.model.FoodItemResponseDTO;
+import com.teste.MagicFridgeAI.model.food.FoodItem;
+import com.teste.MagicFridgeAI.model.food.FoodItemRequestDTO;
+import com.teste.MagicFridgeAI.model.food.FoodItemResponseDTO;
 import com.teste.MagicFridgeAI.model.user.User;
 import com.teste.MagicFridgeAI.repository.FoodItemRepository;
 import com.teste.MagicFridgeAI.repository.UserRepository;

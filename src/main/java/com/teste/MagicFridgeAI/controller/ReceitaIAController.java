@@ -1,8 +1,8 @@
 package com.teste.MagicFridgeAI.controller;
 
-import com.teste.MagicFridgeAI.model.FoodItemResponseDTO;
-import com.teste.MagicFridgeAI.service.FoodItemService;
-import com.teste.MagicFridgeAI.service.ReceitaIAService;
+import com.teste.MagicFridgeAI.model.food.FoodItemResponseDTO;
+import com.teste.MagicFridgeAI.service.food.FoodItemService;
+import com.teste.MagicFridgeAI.service.food.ReceitaIAService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

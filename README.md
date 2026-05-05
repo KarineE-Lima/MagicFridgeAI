@@ -16,11 +16,11 @@
 
 ## Funcionalidades Principais
 
-- [x] *Gestão de Inventário:* CRUD completo de alimentos (Nome, Quantidade, Data de Validade).
+- [x] *Gestão de Inventário:* CRUD completo de alimentos (Nome, Categoria, Quantidade e Data de Validade).
 - [x] *Autenticação e Autorização:* Implementação de segurança com *Spring Security* e *JWT*, garantindo que cada usuário acesse apenas seu próprio inventário.
 - [x] *Sugestão de Receitas com IA:* Integração com o modelo Gemini 2.5 Flash para criar receitas criativas.
 - [x] *Arquitetura em Camadas:* Controller, Service, Repository, Model, Infra.
-- [x] *Handler de Exceções:* Respostas de erro padronizadas para garantir uma melhor experiência do utilizador.
+
 
 ---
 
@@ -36,7 +36,7 @@
 
 1. *Clone o repositório:*
    ```bash
-   git clone https://github.com/KarineE-Lima/MagicFridgeAI.git
+   git clone https://github.com/KarineE-Lima/MagicFridgeAI
    cd MagicFridgeAI
 
 2. *Renomeie o application.properties.example para application.properties e preencha a propriedade:*

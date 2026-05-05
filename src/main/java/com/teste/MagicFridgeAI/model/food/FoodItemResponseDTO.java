@@ -1,4 +1,4 @@
-package com.teste.MagicFridgeAI.model;
+package com.teste.MagicFridgeAI.model.food;
 
 import java.time.LocalDate;
 

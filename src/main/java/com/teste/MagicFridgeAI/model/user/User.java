@@ -1,6 +1,6 @@
 package com.teste.MagicFridgeAI.model.user;
 
-import com.teste.MagicFridgeAI.model.FoodItem;
+import com.teste.MagicFridgeAI.model.food.FoodItem;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.teste.MagicFridgeAI.model;
+package com.teste.MagicFridgeAI.model.food;
 
 import com.teste.MagicFridgeAI.model.user.User;
 import jakarta.persistence.*;

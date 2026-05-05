@@ -163,6 +163,8 @@
                     alert('Ingrediente atualizado com sucesso!')
                     listaFood.innerText = ''
                     listarIngredientes()
+                } else{
+                    alert('Erro ao atualizar o ingrediente!')
                 }
             } catch (erro){
                 console.log(erro)

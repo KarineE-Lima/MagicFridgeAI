@@ -1,4 +1,4 @@
-package com.teste.MagicFridgeAI.service;
+package com.teste.MagicFridgeAI.service.food;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;

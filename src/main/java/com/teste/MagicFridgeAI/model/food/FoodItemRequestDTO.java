@@ -1,4 +1,4 @@
-package com.teste.MagicFridgeAI.model;
+package com.teste.MagicFridgeAI.model.food;
 
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;

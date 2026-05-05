@@ -1,6 +1,6 @@
 package com.teste.MagicFridgeAI.repository;
 
-import com.teste.MagicFridgeAI.model.FoodItem;
+import com.teste.MagicFridgeAI.model.food.FoodItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

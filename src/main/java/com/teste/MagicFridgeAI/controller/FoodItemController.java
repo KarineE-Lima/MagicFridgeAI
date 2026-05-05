@@ -1,8 +1,8 @@
 package com.teste.MagicFridgeAI.controller;
 
-import com.teste.MagicFridgeAI.model.FoodItemRequestDTO;
-import com.teste.MagicFridgeAI.model.FoodItemResponseDTO;
-import com.teste.MagicFridgeAI.service.FoodItemService;
+import com.teste.MagicFridgeAI.model.food.FoodItemRequestDTO;
+import com.teste.MagicFridgeAI.model.food.FoodItemResponseDTO;
+import com.teste.MagicFridgeAI.service.food.FoodItemService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -37,7 +37,7 @@ public class FoodItemController {
     }
    //UPDATE
     @PutMapping("/{id}")
-    public ResponseEntity<FoodItemResponseDTO> atualizar(@PathVariable Long id, @RequestBody FoodItemRequestDTO foodItem){
+    public ResponseEntity<FoodItemResponseDTO> atualizar(@PathVariable Long id, @Valid @RequestBody FoodItemRequestDTO foodItem){
         var atualizado = service.atualizar(id, foodItem);
         return ResponseEntity.ok(atualizado);
     }
